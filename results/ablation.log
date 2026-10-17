@@ -1,0 +1,17 @@
+WARNING: You are currently using Node.js v22.22.0, which is not supported by Hardhat. This can lead to unexpected behavior. See https://hardhat.org/nodejs-versions
+
+
+A1   Work order for nonexistent fault                      20   0   0   0   0
+A2   Work order for undiagnosed fault                      20   0   0   0   0
+A3   Work order for sub-threshold fault                    20   0   0   0   0
+A4   Acceptance of incomplete work order                   20   0   0   0   0
+A5   Fabricated data signed by a non-device key            20  20   0   0   0
+A6   Replay of a previously accepted payload               20  20   0   0   0
+A7   Indicators altered after device signing               20  20   0   0   0
+A8   Diagnosis inflated above attested severity            20  20  20   0   0
+A9   Duplicate work order for the same fault               20  20  20  20   0
+A10  Re-acceptance of an already closed order              20   0   0   0   0
+A11  Work continued by a revoked maintainer                20  20  20  20   0
+A12  Acceptance finalized by a single party                20  20  20  20   0
+A13  Post-repair data entered without device signature     20  20   0   0   0
+TOTAL admitted                                            260 160  80  60   0 of 260

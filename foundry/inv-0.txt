@@ -1,0 +1,7 @@
+[FAIL: order without justified fault]
+[FAIL: verification written for incomplete order: 1 != 0]
+[FAIL: invariant_I3_singleActiveOrder replay failure]
+[FAIL: invariant_I4_faultDataIsDeviceAttested replay failure]
+[FAIL: invariant_I5_diagnosisConsistent replay failure]
+[FAIL: invariant_I6_acceptanceDualAndAttested replay failure]
+[FAIL: invariant_I7_lifecycleBounded replay failure]

@@ -1,0 +1,345 @@
+WARNING: You are currently using Node.js v22.22.0, which is not supported by Hardhat. This can lead to unexpected behavior. See https://hardhat.org/nodejs-versions
+
+
+Compiled 14 Solidity files successfully (evm target: cancun).
+
+
+  Full system (all checks enabled)
+    Access control
+      ✔ initializes the deployer as an authorized supervisor (765ms)
+      ✔ rejects registration by a non-supervisor
+      ✔ rejects duplicate registration
+      ✔ does not grant a role before authorization
+      ✔ removes the role on revocation and emits an event
+    Fault diagnosis: source verification
+      ✔ accepts device-signed data relayed by an authorized gateway
+      ✔ rejects uploads from callers without the ROBOT_DEVICE role
+      ✔ rejects data signed by a key other than the claimed device
+      ✔ rejects a payload whose indicators were altered after signing
+      ✔ rejects a replayed payload
+      ✔ rejects data from a revoked device
+      ✔ rejects an edge severity above 5
+      ✔ stores the raw-data commitment and model hash
+    Fault diagnosis: confirmation
+      ✔ emits the work order trigger at or above the threshold
+      ✔ does not emit the trigger below the threshold
+      ✔ allows a manufacturer to diagnose
+      ✔ rejects diagnosis by an unauthorized role
+      ✔ rejects diagnosis of a nonexistent fault
+      ✔ rejects a severity inconsistent with the attested edge severity
+      ✔ rejects a second diagnosis of the same fault
+    Work orders
+      ✔ creates an order for an eligible fault
+      ✔ rejects orders from non-supervisors
+      ✔ rejects an assignee without the MAINTENANCE role
+      ✔ rejects an order for a nonexistent fault
+      ✔ rejects an order for an undiagnosed fault
+      ✔ rejects an order for a sub-threshold fault
+      ✔ rejects a second active order for the same fault
+      ✔ transitions PENDING to IN_PROGRESS to COMPLETED
+      ✔ rejects operations by a non-assigned maintainer
+      ✔ rejects a report before check-in
+      ✔ rejects work by a maintainer revoked after assignment
+      ✔ only lets the acceptance contract close orders
+      ✔ allows the acceptance contract to be set only once
+    Acceptance
+      ✔ accepts a qualified repair after dual sign-off (59ms)
+      ✔ rejects verification of an order that has not completed repair
+      ✔ rejects verification by an unauthorized role
+      ✔ rejects post-repair data not signed by the robot (38ms)
+      ✔ rejects a countersignature from the same role (52ms)
+      ✔ rejects a second verification while one is pending (58ms)
+      ✔ rejects re-acceptance of an accepted order (55ms)
+      ✔ returns an unqualified repair for rework and accepts it after re-repair (67ms)
+      ✔ escalates after the maximum number of rework rounds (84ms)
+      ✔ frees the fault for a new order once the previous one is accepted (48ms)
+
+  Reduced variant V1 (prerequisite only, as in the original design)
+    ✔ finalizes acceptance with a single sign-off (116ms)
+    ✔ marks an unqualified repair as rejected (no rework path)
+
+  Monolithic baseline
+    ✔ executes a complete cycle with the same checks (57ms)
+
+
+  46 passing (2s)
+
+WARNING: You are currently using Node.js v22.22.0, which is not supported by Hardhat. This can lead to unexpected behavior. See https://hardhat.org/nodejs-versions
+
+
+A1   Work order for nonexistent fault                      20   0   0   0   0
+A2   Work order for undiagnosed fault                      20   0   0   0   0
+A3   Work order for sub-threshold fault                    20   0   0   0   0
+A4   Acceptance of incomplete work order                   20   0   0   0   0
+A5   Fabricated data signed by a non-device key            20  20   0   0   0
+A6   Replay of a previously accepted payload               20  20   0   0   0
+A7   Indicators altered after device signing               20  20   0   0   0
+A8   Diagnosis inflated above attested severity            20  20  20   0   0
+A9   Duplicate work order for the same fault               20  20  20  20   0
+A10  Re-acceptance of an already closed order              20   0   0   0   0
+A11  Work continued by a revoked maintainer                20  20  20  20   0
+A12  Acceptance finalized by a single party                20  20  20  20   0
+A13  Post-repair data entered without device signature     20  20   0   0   0
+TOTAL admitted                                            260 160  80  60   0 of 260
+WARNING: You are currently using Node.js v22.22.0, which is not supported by Hardhat. This can lead to unexpected behavior. See https://hardhat.org/nodejs-versions
+
+
+done V0 RBAC only
+done V1 +prerequisite
+done V2 +source
+done V3 +consistency
+done V4 full
+done mono
+done anchor
+op                    V0 RBAC only V1 +prerequi   V2 +source V3 +consiste      V4 full   Monolithic  Anchor-only
+uploadData                  154442       154442       168312       168312       168312       164247        75900
+submitDiagnosis              36603        36603        36603        36746        36746        33195        75827
+createOrder                 130209       135866       135866       135866       158125       150348        75826
+checkIn                      35741        35741        35741        35741        41669        38149        75827
+submitReport                 58358        58358        58358        58358        64286        60789        75827
+submitVerification          179292       180297       200542       200543       204971       193253        75827
+countersign                      -            -            -            -        62702        51760        75826
+latency ms
+uploadData               4.91±1.14    5.20±1.39    6.66±1.32    6.81±1.46    8.58±2.37    7.51±2.37    2.93±0.82
+submitDiagnosis          3.36±0.82    3.70±1.07    3.37±0.78    3.40±0.86    3.96±1.02    3.68±1.14    2.90±0.74
+createOrder              4.37±0.94    5.28±1.46    4.90±1.04    4.97±1.14    5.87±1.52    4.43±2.01    2.94±0.86
+checkIn                  2.80±0.99    2.98±0.93    2.67±0.68    2.75±0.76    3.81±1.00    3.38±1.22    2.88±0.71
+submitReport             2.97±0.72    3.22±0.97    2.94±0.69    2.89±0.63    4.05±0.99    3.64±1.48    2.89±0.78
+submitVerification       6.13±1.34    6.99±1.63    9.31±1.79    9.46±2.11   10.32±2.59    7.82±2.16    2.93±0.86
+countersign                      -            -            -            -    6.19±1.46    4.35±4.06    2.88±0.75
+{"V0 RBAC only":{"total":3963301,"parts":{"RobotAccessControl":473959,"FaultDiagnosis":1068503,"MaintenanceWorkOrder":1034967,"Acceptance":1335842,"link":50030}},"V1 +prerequisite":{"total":3963337,"parts":{"RobotAccessControl":473959,"FaultDiagnosis":1068515,"MaintenanceWorkOrder":1034979,"Acceptance":1335854,"link":50030}},"V2 +source":{"total":3963337,"parts":{"RobotAccessControl":473959,"FaultDiagnosis":1068515,"MaintenanceWorkOrder":1034979,"Acceptance":1335854,"link":50030}},"V3 +consistency":{"total":3963289,"parts":{"RobotAccessControl":473959,"FaultDiagnosis":1068515,"MaintenanceWorkOrder":1034955,"Acceptance":1335830,"link":50030}},"V4 full":{"total":3963337,"parts":{"RobotAccessControl":473959,"FaultDiagnosis":1068515,"MaintenanceWorkOrder":1034979,"Acceptance":1335854,"link":50030}},"Monolithic":{"total":2438027},"Anchor-only":{"total":329683}} {"RobotAccessControl":1803,"FaultDiagnosis":4694,"MaintenanceWorkOrder":4538,"Acceptance":5785,"MonolithicMaintenance":10739,"AnchorOnly":1176}
+WARNING: You are currently using Node.js v22.22.0, which is not supported by Hardhat. This can lead to unexpected behavior. See https://hardhat.org/nodejs-versions
+
+
+V1 write 4.85±1.44 ms (p95 7.02), gas 154355±541, sign 2.63 ms, read 2.23±0.69 ms, 131.7 rec/s
+V4 write 7.39±2.61 ms (p95 11.57), gas 167952±1429, sign 2.79 ms, read 2.39±0.68 ms, 97.1 rec/s
+{
+ "windows_train": 534,
+ "windows_test": 232,
+ "accuracy": 1.0,
+ "macro_f1": 1.0,
+ "threshold_decision": {
+  "accuracy": 1.0,
+  "false_orders": 0,
+  "missed_orders": 0,
+  "true_order_cases": 142
+ },
+ "acceptance_limits_x1e6": [
+  83133,
+  3241773,
+  4346782
+ ],
+ "confusion": [
+  [
+   36,
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   0,
+   54,
+   0,
+   0,
+   0
+  ],
+  [
+   0,
+   0,
+   54,
+   0,
+   0
+  ],
+  [
+   0,
+   0,
+   0,
+   54,
+   0
+  ],
+  [
+   0,
+   0,
+   0,
+   0,
+   34
+  ]
+ ],
+ "cross_load": {
+  "windows": 885,
+  "accuracy": 0.9796610169491525,
+  "macro_f1": 0.9796082949308756,
+  "confusion": [
+   [
+    236,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    177,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    177,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    18,
+    159,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    0,
+    118
+   ]
+  ],
+  "threshold_decision": {
+   "accuracy": 1.0,
+   "false_orders": 0,
+   "missed_orders": 0,
+   "true_order_cases": 472
+  }
+ }
+}
+WARNING: You are currently using Node.js v22.22.0, which is not supported by Hardhat. This can lead to unexpected behavior. See https://hardhat.org/nodejs-versions
+
+
+{
+  windows: 885,
+  uploaded: 885,
+  diagnosed: 649,
+  orders: 472,
+  accepted: 472,
+  reworkRounds: 112,
+  escalated: 0,
+  commitmentsVerified: 885,
+  ordersByTrue: { '3': 177, '4': 177, '5': 118 },
+  postNormalQualified: 472,
+  postNormalTotal: 490,
+  falseReworks: 18,
+  plannedFailures: 94,
+  lifecycleGasMean: 839845.813559322,
+  lifecycleGasMin: 756153,
+  lifecycleGasMax: 1459385
+}
+WARNING: You are currently using Node.js v22.22.0, which is not supported by Hardhat. This can lead to unexpected behavior. See https://hardhat.org/nodejs-versions
+
+
+
+Version
+=======
+> solidity-coverage: v0.8.17
+
+Instrumenting for coverage...
+=============================
+
+> Acceptance.sol
+> AnchorOnly.sol
+> FaultDiagnosis.sol
+> Flags.sol
+> MaintenanceWorkOrder.sol
+> MonolithicMaintenance.sol
+> RobotAccessControl.sol
+
+Compilation:
+============
+
+Compiled 14 Solidity files successfully (evm target: cancun).
+
+Network Info
+============
+> HardhatEVM: v2.22.0
+> network:    hardhat
+
+
+
+  Full system (all checks enabled)
+    Access control
+      ✔ initializes the deployer as an authorized supervisor (226ms)
+      ✔ rejects registration by a non-supervisor
+      ✔ rejects duplicate registration
+      ✔ does not grant a role before authorization
+      ✔ removes the role on revocation and emits an event
+    Fault diagnosis: source verification
+      ✔ accepts device-signed data relayed by an authorized gateway (47ms)
+      ✔ rejects uploads from callers without the ROBOT_DEVICE role
+      ✔ rejects data signed by a key other than the claimed device
+      ✔ rejects a payload whose indicators were altered after signing
+      ✔ rejects a replayed payload
+      ✔ rejects data from a revoked device
+      ✔ rejects an edge severity above 5
+      ✔ stores the raw-data commitment and model hash
+    Fault diagnosis: confirmation
+      ✔ emits the work order trigger at or above the threshold
+      ✔ does not emit the trigger below the threshold
+      ✔ allows a manufacturer to diagnose
+      ✔ rejects diagnosis by an unauthorized role
+      ✔ rejects diagnosis of a nonexistent fault
+      ✔ rejects a severity inconsistent with the attested edge severity
+      ✔ rejects a second diagnosis of the same fault
+    Work orders
+      ✔ creates an order for an eligible fault (41ms)
+      ✔ rejects orders from non-supervisors
+      ✔ rejects an assignee without the MAINTENANCE role
+      ✔ rejects an order for a nonexistent fault
+      ✔ rejects an order for an undiagnosed fault
+      ✔ rejects an order for a sub-threshold fault (44ms)
+      ✔ rejects a second active order for the same fault (57ms)
+      ✔ transitions PENDING to IN_PROGRESS to COMPLETED (63ms)
+      ✔ rejects operations by a non-assigned maintainer (51ms)
+      ✔ rejects a report before check-in (75ms)
+      ✔ rejects work by a maintainer revoked after assignment (82ms)
+      ✔ only lets the acceptance contract close orders
+      ✔ allows the acceptance contract to be set only once
+    Acceptance
+      ✔ accepts a qualified repair after dual sign-off (145ms)
+      ✔ rejects verification of an order that has not completed repair (56ms)
+      ✔ rejects verification by an unauthorized role (68ms)
+      ✔ rejects post-repair data not signed by the robot (93ms)
+      ✔ rejects a countersignature from the same role (97ms)
+      ✔ rejects a second verification while one is pending (93ms)
+      ✔ rejects re-acceptance of an accepted order (109ms)
+      ✔ returns an unqualified repair for rework and accepts it after re-repair (183ms)
+      ✔ escalates after the maximum number of rework rounds (308ms)
+      ✔ frees the fault for a new order once the previous one is accepted (122ms)
+
+  Reduced variant V1 (prerequisite only, as in the original design)
+    ✔ finalizes acceptance with a single sign-off (238ms)
+    ✔ marks an unqualified repair as rejected (no rework path) (68ms)
+
+  Monolithic baseline
+    ✔ executes a complete cycle with the same checks (122ms)
+
+
+  46 passing (3s)
+
+----------------------------|----------|----------|----------|----------|----------------|
+File                        |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
+----------------------------|----------|----------|----------|----------|----------------|
+ contracts/                 |    92.39 |    67.65 |    86.67 |    93.55 |                |
+  Acceptance.sol            |      100 |    78.13 |      100 |      100 |                |
+  AnchorOnly.sol            |        0 |        0 |        0 |        0 |... 27,28,29,30 |
+  FaultDiagnosis.sol        |      100 |    96.43 |      100 |      100 |                |
+  Flags.sol                 |      100 |      100 |      100 |      100 |                |
+  MaintenanceWorkOrder.sol  |      100 |       90 |      100 |      100 |                |
+  MonolithicMaintenance.sol |    87.21 |    47.56 |    82.61 |    92.31 |... 205,206,235 |
+  RobotAccessControl.sol    |    92.31 |    61.11 |    85.71 |    94.74 |             57 |
+----------------------------|----------|----------|----------|----------|----------------|
+All files                   |    92.39 |    67.65 |    86.67 |    93.55 |                |
+----------------------------|----------|----------|----------|----------|----------------|
+
+> Istanbul reports written to ./coverage/ and ./coverage.json

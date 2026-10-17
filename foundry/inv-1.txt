@@ -1,0 +1,7 @@
+[PASS] invariant_I1_orderHasJustification() (runs: 500, calls: 100000, reverts: 0)
+[PASS] invariant_I2_verificationNeedsCompletion() (runs: 500, calls: 100000, reverts: 0)
+[FAIL: invariant_I3_singleActiveOrder replay failure]
+[FAIL: fault data not attested by device]
+[FAIL: invariant_I5_diagnosisConsistent replay failure]
+[FAIL: invariant_I6_acceptanceDualAndAttested replay failure]
+[FAIL: invariant_I7_lifecycleBounded replay failure]

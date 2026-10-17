@@ -1,0 +1,67 @@
+WARNING: You are currently using Node.js v22.22.0, which is not supported by Hardhat. This can lead to unexpected behavior. See https://hardhat.org/nodejs-versions
+
+
+Downloading compiler 0.8.28
+Compiled 14 Solidity files successfully (evm target: cancun).
+
+
+  Full system (all checks enabled)
+    Access control
+      ✔ initializes the deployer as an authorized supervisor (1174ms)
+      ✔ rejects registration by a non-supervisor
+      ✔ rejects duplicate registration
+      ✔ does not grant a role before authorization
+      ✔ removes the role on revocation and emits an event
+    Fault diagnosis: source verification
+      ✔ accepts device-signed data relayed by an authorized gateway
+      ✔ rejects uploads from callers without the ROBOT_DEVICE role
+      ✔ rejects data signed by a key other than the claimed device
+      ✔ rejects a payload whose indicators were altered after signing
+      ✔ rejects a replayed payload
+      ✔ rejects data from a revoked device
+      ✔ rejects an edge severity above 5
+      ✔ stores the raw-data commitment and model hash
+    Fault diagnosis: confirmation
+      ✔ emits the work order trigger at or above the threshold
+      ✔ does not emit the trigger below the threshold
+      ✔ allows a manufacturer to diagnose
+      ✔ rejects diagnosis by an unauthorized role
+      ✔ rejects diagnosis of a nonexistent fault
+      ✔ rejects a severity inconsistent with the attested edge severity
+      ✔ rejects a second diagnosis of the same fault
+    Work orders
+      ✔ creates an order for an eligible fault
+      ✔ rejects orders from non-supervisors
+      ✔ rejects an assignee without the MAINTENANCE role
+      ✔ rejects an order for a nonexistent fault
+      ✔ rejects an order for an undiagnosed fault
+      ✔ rejects an order for a sub-threshold fault
+      ✔ rejects a second active order for the same fault (46ms)
+      ✔ transitions PENDING to IN_PROGRESS to COMPLETED (39ms)
+      ✔ rejects operations by a non-assigned maintainer
+      ✔ rejects a report before check-in
+      ✔ rejects work by a maintainer revoked after assignment
+      ✔ only lets the acceptance contract close orders
+      ✔ allows the acceptance contract to be set only once
+    Acceptance
+      ✔ accepts a qualified repair after dual sign-off (73ms)
+      ✔ rejects verification of an order that has not completed repair (42ms)
+      ✔ rejects verification by an unauthorized role (50ms)
+      ✔ rejects post-repair data not signed by the robot (58ms)
+      ✔ rejects a countersignature from the same role (68ms)
+      ✔ rejects a second verification while one is pending (70ms)
+      ✔ rejects re-acceptance of an accepted order (72ms)
+      ✔ returns an unqualified repair for rework and accepts it after re-repair (99ms)
+      ✔ escalates after the maximum number of rework rounds (137ms)
+      ✔ frees the fault for a new order once the previous one is accepted (74ms)
+
+  Reduced variant V1 (prerequisite only, as in the original design)
+    ✔ finalizes acceptance with a single sign-off (188ms)
+    ✔ marks an unqualified repair as rejected (no rework path) (54ms)
+
+  Monolithic baseline
+    ✔ executes a complete cycle with the same checks (100ms)
+
+
+  46 passing (3s)
+

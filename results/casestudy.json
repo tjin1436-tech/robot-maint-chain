@@ -1,0 +1,22 @@
+{
+  "windows": 885,
+  "uploaded": 885,
+  "diagnosed": 649,
+  "orders": 472,
+  "accepted": 472,
+  "reworkRounds": 112,
+  "escalated": 0,
+  "commitmentsVerified": 885,
+  "ordersByTrue": {
+    "3": 177,
+    "4": 177,
+    "5": 118
+  },
+  "postNormalQualified": 472,
+  "postNormalTotal": 490,
+  "falseReworks": 18,
+  "plannedFailures": 94,
+  "lifecycleGasMean": 839845.5593220339,
+  "lifecycleGasMin": 756165,
+  "lifecycleGasMax": 1459385
+}

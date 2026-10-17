@@ -1,0 +1,47 @@
+{
+ "15": [
+  "[PASS] invariant_I1_orderHasJustification() (runs: 500, calls: 100000, reverts: 0)",
+  "[PASS] invariant_I2_verificationNeedsCompletion() (runs: 500, calls: 100000, reverts: 0)",
+  "[PASS] invariant_I3_singleActiveOrder() (runs: 500, calls: 100000, reverts: 0)",
+  "[PASS] invariant_I4_faultDataIsDeviceAttested() (runs: 500, calls: 100000, reverts: 0)",
+  "[PASS] invariant_I5_diagnosisConsistent() (runs: 500, calls: 100000, reverts: 0)",
+  "[PASS] invariant_I6_acceptanceDualAndAttested() (runs: 500, calls: 100000, reverts: 0)",
+  "[PASS] invariant_I7_lifecycleBounded() (runs: 500, calls: 100000, reverts: 0)"
+ ],
+ "7": [
+  "[PASS] invariant_I1_orderHasJustification() (runs: 500, calls: 100000, reverts: 0)",
+  "[PASS] invariant_I2_verificationNeedsCompletion() (runs: 500, calls: 100000, reverts: 0)",
+  "[FAIL: two active orders for one fault]",
+  "[PASS] invariant_I4_faultDataIsDeviceAttested() (runs: 500, calls: 100000, reverts: 0)",
+  "[PASS] invariant_I5_diagnosisConsistent() (runs: 500, calls: 100000, reverts: 0)",
+  "[FAIL: acceptance finalized by one party]",
+  "[FAIL: revoked maintainer advanced an order: 1 != 0]"
+ ],
+ "3": [
+  "[PASS] invariant_I1_orderHasJustification() (runs: 500, calls: 100000, reverts: 0)",
+  "[PASS] invariant_I2_verificationNeedsCompletion() (runs: 500, calls: 100000, reverts: 0)",
+  "[FAIL: invariant_I3_singleActiveOrder replay failure]",
+  "[PASS] invariant_I4_faultDataIsDeviceAttested() (runs: 500, calls: 100000, reverts: 0)",
+  "[FAIL: diagnosis inconsistent with attested data: 2 != 5]",
+  "[FAIL: invariant_I6_acceptanceDualAndAttested replay failure]",
+  "[FAIL: invariant_I7_lifecycleBounded replay failure]"
+ ],
+ "1": [
+  "[PASS] invariant_I1_orderHasJustification() (runs: 500, calls: 100000, reverts: 0)",
+  "[PASS] invariant_I2_verificationNeedsCompletion() (runs: 500, calls: 100000, reverts: 0)",
+  "[FAIL: invariant_I3_singleActiveOrder replay failure]",
+  "[FAIL: fault data not attested by device]",
+  "[FAIL: invariant_I5_diagnosisConsistent replay failure]",
+  "[FAIL: invariant_I6_acceptanceDualAndAttested replay failure]",
+  "[FAIL: invariant_I7_lifecycleBounded replay failure]"
+ ],
+ "0": [
+  "[FAIL: order without justified fault]",
+  "[FAIL: verification written for incomplete order: 1 != 0]",
+  "[FAIL: invariant_I3_singleActiveOrder replay failure]",
+  "[FAIL: invariant_I4_faultDataIsDeviceAttested replay failure]",
+  "[FAIL: invariant_I5_diagnosisConsistent replay failure]",
+  "[FAIL: invariant_I6_acceptanceDualAndAttested replay failure]",
+  "[FAIL: invariant_I7_lifecycleBounded replay failure]"
+ ]
+}

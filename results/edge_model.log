@@ -1,0 +1,102 @@
+{
+ "windows_train": 534,
+ "windows_test": 232,
+ "accuracy": 1.0,
+ "macro_f1": 1.0,
+ "threshold_decision": {
+  "accuracy": 1.0,
+  "false_orders": 0,
+  "missed_orders": 0,
+  "true_order_cases": 142
+ },
+ "acceptance_limits_x1e6": [
+  83133,
+  3241773,
+  4346782
+ ],
+ "confusion": [
+  [
+   36,
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   0,
+   54,
+   0,
+   0,
+   0
+  ],
+  [
+   0,
+   0,
+   54,
+   0,
+   0
+  ],
+  [
+   0,
+   0,
+   0,
+   54,
+   0
+  ],
+  [
+   0,
+   0,
+   0,
+   0,
+   34
+  ]
+ ],
+ "cross_load": {
+  "windows": 885,
+  "accuracy": 0.9796610169491525,
+  "macro_f1": 0.9796082949308756,
+  "confusion": [
+   [
+    236,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    177,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    177,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    18,
+    159,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    0,
+    118
+   ]
+  ],
+  "threshold_decision": {
+   "accuracy": 1.0,
+   "false_orders": 0,
+   "missed_orders": 0,
+   "true_order_cases": 472
+  }
+ }
+}

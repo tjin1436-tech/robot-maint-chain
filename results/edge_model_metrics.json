@@ -1,0 +1,175 @@
+{
+  "windows_train": 534,
+  "windows_test": 232,
+  "window": 2048,
+  "class_counts_train": {
+    "0": 83,
+    "2": 123,
+    "3": 123,
+    "4": 123,
+    "5": 82
+  },
+  "class_counts_test": {
+    "0": 36,
+    "2": 54,
+    "3": 54,
+    "4": 54,
+    "5": 34
+  },
+  "accuracy": 1.0,
+  "macro_f1": 1.0,
+  "confusion_labels": [
+    0,
+    2,
+    3,
+    4,
+    5
+  ],
+  "confusion": [
+    [
+      36,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      54,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      54,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      54,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      34
+    ]
+  ],
+  "threshold_decision": {
+    "accuracy": 1.0,
+    "false_orders": 0,
+    "missed_orders": 0,
+    "true_order_cases": 142
+  },
+  "report": {
+    "0": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 36.0
+    },
+    "2": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 54.0
+    },
+    "3": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 54.0
+    },
+    "4": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 54.0
+    },
+    "5": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 34.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 232.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 232.0
+    }
+  },
+  "model_hash_sha256": "0xda19aecd7608388f4c8dd5b619a2f7021954fd69e8598b233e8ee40b62eaa1c3",
+  "acceptance_limits_x1e6": [
+    83133,
+    3241773,
+    4346782
+  ],
+  "normal_train_indicator_max": [
+    0.07917422898535767,
+    3.0874022277808355,
+    4.139792324971677
+  ],
+  "cross_load": {
+    "windows": 885,
+    "accuracy": 0.9796610169491525,
+    "macro_f1": 0.9796082949308756,
+    "confusion": [
+      [
+        236,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        177,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        177,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        18,
+        159,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        118
+      ]
+    ],
+    "threshold_decision": {
+      "accuracy": 1.0,
+      "false_orders": 0,
+      "missed_orders": 0,
+      "true_order_cases": 472
+    }
+  }
+}

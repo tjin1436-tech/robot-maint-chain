@@ -1,0 +1,7 @@
+[PASS] invariant_I1_orderHasJustification() (runs: 500, calls: 100000, reverts: 0)
+[PASS] invariant_I2_verificationNeedsCompletion() (runs: 500, calls: 100000, reverts: 0)
+[PASS] invariant_I3_singleActiveOrder() (runs: 500, calls: 100000, reverts: 0)
+[PASS] invariant_I4_faultDataIsDeviceAttested() (runs: 500, calls: 100000, reverts: 0)
+[PASS] invariant_I5_diagnosisConsistent() (runs: 500, calls: 100000, reverts: 0)
+[PASS] invariant_I6_acceptanceDualAndAttested() (runs: 500, calls: 100000, reverts: 0)
+[PASS] invariant_I7_lifecycleBounded() (runs: 500, calls: 100000, reverts: 0)

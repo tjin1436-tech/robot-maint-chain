@@ -1,0 +1,107 @@
+WARNING: You are currently using Node.js v22.22.0, which is not supported by Hardhat. This can lead to unexpected behavior. See https://hardhat.org/nodejs-versions
+
+
+
+Version
+=======
+> solidity-coverage: v0.8.17
+
+Instrumenting for coverage...
+=============================
+
+> Acceptance.sol
+> AnchorOnly.sol
+> FaultDiagnosis.sol
+> Flags.sol
+> MaintenanceWorkOrder.sol
+> MonolithicMaintenance.sol
+> RobotAccessControl.sol
+
+Compilation:
+============
+
+Compiled 14 Solidity files successfully (evm target: cancun).
+
+Network Info
+============
+> HardhatEVM: v2.22.0
+> network:    hardhat
+
+
+
+  Full system (all checks enabled)
+    Access control
+      ✔ initializes the deployer as an authorized supervisor (337ms)
+      ✔ rejects registration by a non-supervisor
+      ✔ rejects duplicate registration
+      ✔ does not grant a role before authorization
+      ✔ removes the role on revocation and emits an event
+    Fault diagnosis: source verification
+      ✔ accepts device-signed data relayed by an authorized gateway (73ms)
+      ✔ rejects uploads from callers without the ROBOT_DEVICE role
+      ✔ rejects data signed by a key other than the claimed device (55ms)
+      ✔ rejects a payload whose indicators were altered after signing (53ms)
+      ✔ rejects a replayed payload (63ms)
+      ✔ rejects data from a revoked device
+      ✔ rejects an edge severity above 5
+      ✔ stores the raw-data commitment and model hash (53ms)
+    Fault diagnosis: confirmation
+      ✔ emits the work order trigger at or above the threshold (57ms)
+      ✔ does not emit the trigger below the threshold (53ms)
+      ✔ allows a manufacturer to diagnose (55ms)
+      ✔ rejects diagnosis by an unauthorized role (60ms)
+      ✔ rejects diagnosis of a nonexistent fault
+      ✔ rejects a severity inconsistent with the attested edge severity (56ms)
+      ✔ rejects a second diagnosis of the same fault (64ms)
+    Work orders
+      ✔ creates an order for an eligible fault (77ms)
+      ✔ rejects orders from non-supervisors (68ms)
+      ✔ rejects an assignee without the MAINTENANCE role (72ms)
+      ✔ rejects an order for a nonexistent fault
+      ✔ rejects an order for an undiagnosed fault (69ms)
+      ✔ rejects an order for a sub-threshold fault (74ms)
+      ✔ rejects a second active order for the same fault (94ms)
+      ✔ transitions PENDING to IN_PROGRESS to COMPLETED (93ms)
+      ✔ rejects operations by a non-assigned maintainer (83ms)
+      ✔ rejects a report before check-in (94ms)
+      ✔ rejects work by a maintainer revoked after assignment (85ms)
+      ✔ only lets the acceptance contract close orders
+      ✔ allows the acceptance contract to be set only once
+    Acceptance
+      ✔ accepts a qualified repair after dual sign-off (190ms)
+      ✔ rejects verification of an order that has not completed repair (101ms)
+      ✔ rejects verification by an unauthorized role (124ms)
+      ✔ rejects post-repair data not signed by the robot (152ms)
+      ✔ rejects a countersignature from the same role (177ms)
+      ✔ rejects a second verification while one is pending (184ms)
+      ✔ rejects re-acceptance of an accepted order (199ms)
+      ✔ returns an unqualified repair for rework and accepts it after re-repair (288ms)
+      ✔ escalates after the maximum number of rework rounds (363ms)
+      ✔ frees the fault for a new order once the previous one is accepted (185ms)
+
+  Reduced variant V1 (prerequisite only, as in the original design)
+    ✔ finalizes acceptance with a single sign-off (314ms)
+    ✔ marks an unqualified repair as rejected (no rework path) (114ms)
+
+  Monolithic baseline
+    ✔ executes a complete cycle with the same checks (200ms)
+
+
+  46 passing (5s)
+
+----------------------------|----------|----------|----------|----------|----------------|
+File                        |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
+----------------------------|----------|----------|----------|----------|----------------|
+ contracts/                 |    92.39 |    67.65 |    86.67 |    93.55 |                |
+  Acceptance.sol            |      100 |    78.13 |      100 |      100 |                |
+  AnchorOnly.sol            |        0 |        0 |        0 |        0 |... 27,28,29,30 |
+  FaultDiagnosis.sol        |      100 |    96.43 |      100 |      100 |                |
+  Flags.sol                 |      100 |      100 |      100 |      100 |                |
+  MaintenanceWorkOrder.sol  |      100 |       90 |      100 |      100 |                |
+  MonolithicMaintenance.sol |    87.21 |    47.56 |    82.61 |    92.31 |... 205,206,235 |
+  RobotAccessControl.sol    |    92.31 |    61.11 |    85.71 |    94.74 |             57 |
+----------------------------|----------|----------|----------|----------|----------------|
+All files                   |    92.39 |    67.65 |    86.67 |    93.55 |                |
+----------------------------|----------|----------|----------|----------|----------------|
+
+> Istanbul reports written to ./coverage/ and ./coverage.json

@@ -1,0 +1,7 @@
+CPU(s):                                  4
+Model name:                              Intel(R) Xeon(R) CPU @ 2.20GHz
+               total        used        free      shared  buff/cache   available
+Mem:            31Gi       1.3Gi        23Gi       1.7Mi       7.3Gi        30Gi
+Linux 2a4a41c5f1d1 6.18.48+ #1 SMP Sun Sep 27 17:32:16 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+v22.22.0
+forge Version: 1.5.1-v1.5.1

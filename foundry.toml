@@ -1,0 +1,20 @@
+[profile.default]
+src = "contracts"
+test = "foundry/test"
+out = "foundry/out"
+cache_path = "foundry/cache"
+libs = ["node_modules", "lib"]
+remappings = ["@openzeppelin/=node_modules/@openzeppelin/", "forge-std/=lib/forge-std/src/"]
+solc = "bin/solc"
+offline = true
+optimizer = true
+optimizer_runs = 200
+evm_version = "cancun"
+fs_permissions = [{ access = "read-write", path = "./foundry" }]
+
+[invariant]
+runs = 500
+depth = 200
+fail_on_revert = false
+
+

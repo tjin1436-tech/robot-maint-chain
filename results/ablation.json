@@ -1,0 +1,175 @@
+{
+  "attempts": 20,
+  "variants": [
+    "V0 RBAC only",
+    "V1 +prerequisite",
+    "V2 +source",
+    "V3 +consistency",
+    "V4 full"
+  ],
+  "attacks": [
+    {
+      "id": "A1",
+      "layer": "prerequisite",
+      "name": "Work order for nonexistent fault",
+      "admitted": [
+        20,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A2",
+      "layer": "prerequisite",
+      "name": "Work order for undiagnosed fault",
+      "admitted": [
+        20,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A3",
+      "layer": "prerequisite",
+      "name": "Work order for sub-threshold fault",
+      "admitted": [
+        20,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A4",
+      "layer": "prerequisite",
+      "name": "Acceptance of incomplete work order",
+      "admitted": [
+        20,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A5",
+      "layer": "source",
+      "name": "Fabricated data signed by a non-device key",
+      "admitted": [
+        20,
+        20,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A6",
+      "layer": "source",
+      "name": "Replay of a previously accepted payload",
+      "admitted": [
+        20,
+        20,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A7",
+      "layer": "source",
+      "name": "Indicators altered after device signing",
+      "admitted": [
+        20,
+        20,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A8",
+      "layer": "consistency",
+      "name": "Diagnosis inflated above attested severity",
+      "admitted": [
+        20,
+        20,
+        20,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A9",
+      "layer": "lifecycle",
+      "name": "Duplicate work order for the same fault",
+      "admitted": [
+        20,
+        20,
+        20,
+        20,
+        0
+      ]
+    },
+    {
+      "id": "A10",
+      "layer": "prerequisite",
+      "name": "Re-acceptance of an already closed order",
+      "admitted": [
+        20,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A11",
+      "layer": "lifecycle",
+      "name": "Work continued by a revoked maintainer",
+      "admitted": [
+        20,
+        20,
+        20,
+        20,
+        0
+      ]
+    },
+    {
+      "id": "A12",
+      "layer": "lifecycle",
+      "name": "Acceptance finalized by a single party",
+      "admitted": [
+        20,
+        20,
+        20,
+        20,
+        0
+      ]
+    },
+    {
+      "id": "A13",
+      "layer": "source",
+      "name": "Post-repair data entered without device signature",
+      "admitted": [
+        20,
+        20,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "totals": [
+    260,
+    160,
+    80,
+    60,
+    0
+  ]
+}

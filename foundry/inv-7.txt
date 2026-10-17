@@ -1,0 +1,7 @@
+[PASS] invariant_I1_orderHasJustification() (runs: 500, calls: 100000, reverts: 0)
+[PASS] invariant_I2_verificationNeedsCompletion() (runs: 500, calls: 100000, reverts: 0)
+[FAIL: two active orders for one fault]
+[PASS] invariant_I4_faultDataIsDeviceAttested() (runs: 500, calls: 100000, reverts: 0)
+[PASS] invariant_I5_diagnosisConsistent() (runs: 500, calls: 100000, reverts: 0)
+[FAIL: acceptance finalized by one party]
+[FAIL: revoked maintainer advanced an order: 1 != 0]
